@@ -1,0 +1,298 @@
+@import 'variable';
+
+* {
+    box-sizing: border-box;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../image/bulletin-board.jpg);
+}
+
+#header {
+    @include flex(space-between, center);
+    padding: 20px;
+
+    @include RWD-845 {
+        @include flex(center, center, block)
+    }
+
+    .effects{
+        @include size(0.5px, 170px);
+        position: absolute;
+        left: 30%;
+        top: 20%;
+        transform: translate(-50%,-50%);
+
+        @include RWD-845 {
+            display: none
+        }
+    }
+
+    .title {
+        @include size(1000px, 130px);
+        @include flex(center, center);
+        @include font(70px);
+        font-family: 'ZCOOL KuaiLe', cursive;
+        color: $bg-title;
+        text-shadow: $bg-shadow 1px 1px 10px;
+        z-index: 999999;
+
+        @include RWD-845 {
+            @include size(100%, 130px);
+            @include font(60px);
+        }
+    }
+
+    .area {
+        @include flex(center, center);
+        z-index: 999999;
+
+        @include RWD-845 {
+            padding: 30px 0
+        }
+
+        .btn-region {
+            @extend %btn-style;
+            @include font(30px);
+
+            span{
+                @extend %span-style;
+                @include size(25%, 100%);
+
+                &:nth-child(1){
+                    --n: 1;
+                }
+    
+                &:nth-child(2) {
+                    --n: 2;
+                }
+                  
+                &:nth-child(3) {
+                    --n: 3;
+                }
+                  
+                &:nth-child(4) {
+                    --n: 4;
+                }
+            }
+
+            &:focus {
+                @extend %btn-focus;
+            }
+
+            &:hover {
+                color: $bg-title;
+            }
+
+            &:hover span{
+                transform: translateY(0) scale(3);
+                opacity: 1
+            }
+        }
+    }
+
+    .time_box {
+        @include size(500px, 130px);
+        @include flex(space-around, center);
+        @include font(30px);
+        z-index: 999999;
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 0 20px;
+        background: linear-gradient(to right,transparent,$bg-shadow, transparent);
+        font-family: 'ZCOOL KuaiLe', cursive;
+
+        @include RWD-1340 {
+            @include font(23px);
+        }
+
+        @include RWD-845 {
+            @include size(100%, 130px);
+            @include font(23px);
+        }
+
+        #time_small {
+            @include font(50px);
+            @include RWD-1340 {
+                @include font(30px);
+            }
+
+            @include RWD-845 {
+                @include font(40px);
+            }
+        }
+    }
+
+    .eye_catch {
+        @include size(100vw, 100vh);
+        position: absolute;
+        right: -50vw;
+        top: 0;
+        background-image: url(../image/bulletin-board.jpg);
+        background-image: url(../image/eye-catch02.png);
+        background-position: center;
+        background-size: cover;
+        z-index: 99999;
+        transition: 0s;
+        animation: eye_catch 2s ease-in-out;
+
+        @include RWD-560 {
+            display: none;
+        }
+
+        @keyframes eye_catch {
+            0% {
+                right: 0;
+            }
+
+            100% {
+                right: 100%;
+            }
+        }
+    }
+}
+
+#main {
+    padding: 20px 20px;
+
+    #container {
+        @include size(100%, 100%);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+
+        @include RWD-1340 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include RWD-845 {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .card {
+            @include size(100%, 300px);
+            @include flex(center, start);
+            @include font(25px);
+            position: relative;
+            flex-direction: column;
+            border-radius: 20px;
+            padding: 0 25px;
+            background-color: $bg-cards;
+            opacity: 0.8;
+            font-family: 'Hachi Maru Pop', cursive;
+            animation: join 1.2s ease-in-out;
+            animation: bgfloat 1s ease-in-out infinite alternate;
+
+            @include RWD-560 {
+                @include size(100%, 400px);
+                @include font(19px);
+                @include flex(flex-end, start);
+                padding-bottom: 20px;
+            }
+
+            @keyframes join {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 0.8;
+                }
+            }
+
+            @keyframes bgfloat{
+                0%{
+                    background-position-y: 0px;
+                }
+
+                100%{
+                    background-position-y: 15px;
+                }
+            }
+
+            .h2 {
+                @include RWD-560 {
+                    margin: 0;
+                }
+            }
+
+            div{
+                text-shadow: $bg-shadow 5px 5px 5px;
+                border-radius: 10px
+            }
+        }
+
+        .clear {
+            @include bg;
+            background-image: url(../image/clear.png);
+        }
+
+        .mostly-clear {
+            @include bg;
+            background-image: url(../image/mostly-clear.png);
+        }
+
+        .partly-cloudy {
+            @include bg;
+            background-image: url(../image/partly-cloudy.png);
+        }
+
+        .cloudy {
+            @include bg;
+            background-image: url(../image/cloudy.png);
+        }
+
+        .rainy {
+            @include bg;
+            background-image: url(../image/rainy.png);
+        }
+    }
+}
+
+footer{
+    @include flex(center, center);
+
+    .back{
+        @extend %btn-style;
+        @include font(30px);
+
+        span{
+            @extend %span-style;
+            @include size(25%, 100%);
+
+            &:nth-child(1){
+                --n: 1;
+            }
+
+            &:nth-child(2) {
+                --n: 2;
+            }
+              
+            &:nth-child(3) {
+                --n: 3;
+            }
+              
+            &:nth-child(4) {
+                --n: 4;
+            }
+        }
+
+        &:focus {
+            @extend %btn-focus;
+        }
+
+        &:hover {
+            color: $bg-title;
+        }
+
+        &:hover span{
+            transform: translateY(0) scale(3);
+            opacity: 1
+        }
+    }
+}

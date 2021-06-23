@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./css/Weather.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="effects">
+            <css-doodle>
+                :doodle {
+                @grid: 6 / 100%;
+                }
+
+                background: @pick(
+                #F38181, #FCE38A, #EAFFD0, #95E1D3
+                );
+
+                transform: translate(
+                @rand(-50vw, 50vw),
+                @rand(-50vh, 50vh)
+                );
+
+                @size: 10vmin;
+                @shape: bud, 5;
+                @place-cell: 50% 50%;
+
+                animation-name: explosion;
+                animation-iteration-count: infinite;
+                animation-direction: reverse;
+                animation-duration: calc(@rand(2s, 5s, .1));
+                animation-delay: calc(@rand(-5s, -1s, .1));
+                animation-timing-function:
+                cubic-bezier(.84, .82, 1, 1);
+
+                @keyframes explosion {
+                0% { opacity: 0; }
+                70% { opacity: 1; }
+                100% { transform: translate(0, 0); }
+                }
+            </css-doodle>
+        </div>
+        <div class="title">Weather Forecast</div>
+        <div class="area">
+            <button id="btn_allarea" class="btn-region">全臺
+                <span></span><span></span><span></span><span></span>
+            </button>
+            <button id="btn_north" class="btn-region">北部
+                <span></span><span></span><span></span><span></span>
+            </button>
+            <button id="btn_middle" class="btn-region">中部
+                <span></span><span></span><span></span><span></span>
+            </button>
+            <button id="btn_south" class="btn-region">南部
+                <span></span><span></span><span></span><span></span>
+            </button>
+            <button id="btn_east" class="btn-region">東部
+                <span></span><span></span><span></span><span></span>
+            </button>
+            <button id="btn_island" class="btn-region">離島
+                <span></span><span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="time_box">
+            <div id="time_small"></div>
+            <div id="time_big"></div>
+        </div>
+        <div id="eye_catch"></div>
+    </header>
+    <main id="main">
+        <div id="container"></div>
+    </main>
+    <footer>
+        <a href="#header">
+            <button class="back">回到上方
+                <span></span><span></span><span></span><span></span>
+            </button>
+        </a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+    <script src="https://unpkg.com/css-doodle@0.15.3/css-doodle.min.js"></script>
+    <script src="./js/Weather.js"></script>
+</body>
+
+</html>
