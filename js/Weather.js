@@ -126,7 +126,7 @@ testBtn.addEventListener('click', function() {
     if ('granted' === state) {
       //用户同意授权
       alert('OK');
-      window.addEventListener('devicemotion', myYaoyiyoaHandler, true);
+      window.addEventListener('deviceorientation', myYaoyiyoaHandler, false);
     } else {
       //用户拒绝授权
       alert('摇一摇需要授权设备运动权限,请重启应用后,再次进行授权!')
