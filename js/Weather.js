@@ -119,32 +119,35 @@ function eyeCatch(){
     },2000);
 }
 
-const testBtn = document.querySelector('#test');
-testBtn.addEventListener('click', function() {
+const authorizeBtn = document.querySelector('#authorize-btn');
+authorizeBtn.addEventListener('click', function() {
   window.DeviceMotionEvent.requestPermission()
   .then(function(state) {
     if ('granted' === state) {
-      //用户同意授权
-      alert('OK');
-      window.addEventListener('deviceorientation', myYaoyiyoaHandler, false);
+      // 使用者同意授權
+      window.addEventListener('deviceorientation', myHandler, false);
     } else {
-      //用户拒绝授权
-      alert('摇一摇需要授权设备运动权限,请重启应用后,再次进行授权!')
+      // 使用者拒絕授權
+      alert('需要授權，請重新啟動後，再次進行授權')
     }
   })
-  .catch(function(err) {
-    alert('error: ' + err)
-  })
+  .catch(function(error) {
+    alert(`error: ${error}`);
+  });
 });
 
-function myYaoyiyoaHandler(event) {
+/**
+ * 將放入觸發的陀螺儀事件的alpha、beta、gamma放入畫面中顯示
+ * @param {*} event 觸發的陀螺儀事件
+ */
+function myHandler(event) {
   const alphaOutput = document.querySelector('#alpha');
   const betaOutput = document.querySelector('#beta');
   const gammaOutput = document.querySelector('#gamma');
   const alpha = event.alpha;
   const beta = event.beta ;
   const gamma = event.gamma;
-  alphaOutput.innerHTML = alpha;
-  betaOutput.innerHTML = beta;
-  gammaOutput.innerHTML = gamma;
+  alphaOutput.textContent = alpha;
+  betaOutput.textContent = beta;
+  gammaOutput.textContent = gamma;
 }
