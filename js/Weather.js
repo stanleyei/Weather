@@ -141,9 +141,9 @@ authorizeBtn.addEventListener('click', function() {
  * @param {*} event 觸發的陀螺儀事件
  */
 function myHandler(event) {
-  const alphaOutput = document.querySelector('#alpha');
-  const betaOutput = document.querySelector('#beta');
-  const gammaOutput = document.querySelector('#gamma');
+  const alphaOutput = document.querySelector('#alpha-output');
+  const betaOutput = document.querySelector('#beta-output');
+  const gammaOutput = document.querySelector('#gamma-output');
   const alpha = event.alpha;
   const beta = event.beta ;
   const gamma = event.gamma;
