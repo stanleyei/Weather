@@ -126,6 +126,7 @@ testBtn.addEventListener('click', function() {
     if ('granted' === state) {
       //用户同意授权
       alert('OK');
+      window.addEventListener('devicemotion', myYaoyiyoaHandler, true);
     } else {
       //用户拒绝授权
       alert('摇一摇需要授权设备运动权限,请重启应用后,再次进行授权!')
@@ -135,3 +136,15 @@ testBtn.addEventListener('click', function() {
     alert('error: ' + err)
   })
 });
+
+function myYaoyiyoaHandler(event) {
+  const alphaOutput = document.querySelector('#alpha');
+  const betaOutput = document.querySelector('#beta');
+  const gammaOutput = document.querySelector('#gamma');
+  const alpha = event.alpha;
+  const beta = event.beta ;
+  const gamma = event.gamma;
+  alphaOutput.innerHTML = alpha;
+  betaOutput.innerHTML = beta;
+  gammaOutput.innerHTML = gamma;
+}
