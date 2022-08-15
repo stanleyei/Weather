@@ -118,3 +118,20 @@ function eyeCatch(){
         eye_catch.classList.remove('eye_catch')
     },2000);
 }
+
+const testBtn = document.querySelector('#test');
+testBtn.addEventListener('click', function() {
+  window.DeviceMotionEvent.requestPermission()
+  .then(function(state) {
+    if ('granted' === state) {
+      //用户同意授权
+      alert('OK');
+    } else {
+      //用户拒绝授权
+      alert('摇一摇需要授权设备运动权限,请重启应用后,再次进行授权!')
+    }
+  })
+  .catch(function(err) {
+    alert('error: ' + err)
+  })
+});
