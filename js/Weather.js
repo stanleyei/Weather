@@ -138,7 +138,7 @@ authorizeBtn.addEventListener('click', function() {
 
 /**
  * 將放入觸發的陀螺儀事件的alpha、beta、gamma放入畫面中顯示
- * @param {*} event 觸發的陀螺儀事件
+ * @param {Event} event 觸發的陀螺儀事件
  */
 function myHandler(event) {
   const alphaOutput = document.querySelector('#alpha-output');
