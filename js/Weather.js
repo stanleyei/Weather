@@ -9,7 +9,7 @@ ShowTime();
 eyeCatch()
 
 //向網站發送請求
-fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-34FB2911-10A9-4F0B-9FAD-997DD3B43AF5')
+fetch('https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-34FB2911-10A9-4F0B-9FAD-997DD3B43AF5')
 
     //將回應的資料取出
     .then(function (response) {
