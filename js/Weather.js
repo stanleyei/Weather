@@ -118,36 +118,3 @@ function eyeCatch(){
         eye_catch.classList.remove('eye_catch')
     },2000);
 }
-
-const authorizeBtn = document.querySelector('#authorize-btn');
-authorizeBtn.addEventListener('click', function() {
-  window.DeviceMotionEvent.requestPermission()
-  .then(function(state) {
-    if ('granted' === state) {
-      // 使用者同意授權
-      window.addEventListener('deviceorientation', myHandler, false);
-    } else {
-      // 使用者拒絕授權
-      alert('需要授權，請重新啟動後，再次進行授權')
-    }
-  })
-  .catch(function(error) {
-    alert(`error: ${error}`);
-  });
-});
-
-/**
- * 將放入觸發的陀螺儀事件的alpha、beta、gamma放入畫面中顯示
- * @param {Event} event 觸發的陀螺儀事件
- */
-function myHandler(event) {
-  const alphaOutput = document.querySelector('#alpha-output');
-  const betaOutput = document.querySelector('#beta-output');
-  const gammaOutput = document.querySelector('#gamma-output');
-  const alpha = event.alpha;
-  const beta = event.beta ;
-  const gamma = event.gamma;
-  alphaOutput.textContent = alpha;
-  betaOutput.textContent = beta;
-  gammaOutput.textContent = gamma;
-}
